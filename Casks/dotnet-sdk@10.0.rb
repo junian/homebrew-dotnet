@@ -6,7 +6,7 @@ cask "dotnet-sdk@10.0" do
          intel: "00b5d3054f19d4a82862dfb9e7357132d985effd397cdf4e68b2c3bad93eb817"
 
   url "https://builds.dotnet.microsoft.com/dotnet/Sdk/#{version}/dotnet-sdk-#{version}-osx-#{arch}.pkg"
-  name ".NET SDK"
+  name ".NET 10 Release Candidate SDK"
   desc "Developer platform"
   homepage "https://www.microsoft.com/net/core#macos"
 
