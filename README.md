@@ -20,11 +20,21 @@ brew tap junian/homebrew-dotnet
 > 
 > If you're currently using .NET formula from official `homebrew-cask`, you need to zap it first e.g., `brew uninstall --zap dotnet-sdk`.
 
+### Installation
+
 Then you can install .NET version as you wish.
+
+```shell
+brew install dotnet-sdk@<version>
+```
+
+Or
 
 ```shell
 brew install junian/dotnet/dotnet-sdk@<version>
 ```
+
+### Uninstallation
 
 You can also uninstall .NET version as you wish.
 
@@ -32,8 +42,13 @@ You can also uninstall .NET version as you wish.
 brew uninstall junian/dotnet/dotnet-sdk@<version>
 ```
 
-## .NET SDK Versions
+Or
 
+```shell
+brew uninstall junian/dotnet/dotnet-sdk@<version>
+```
+
+## .NET SDK Versions
 
 | Version | Formula |
 |---------|---------|
