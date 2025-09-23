@@ -83,8 +83,8 @@ Following apps requires [Mono MDK](#mono-mdk-version).
 
 If you're confused with .NET version and naming, here's a brief history:
 
-1.  **2002:** .NET Framework (Windows-only)
-2.  **2004:** Mono (Community-driven, cross-platform)
-3.  **2011:** Xamarin (Mono for mobile)
-4.  **2016:** Microsoft acquires Xamarin & releases .NET Core (Modern, cross-platform)
-5.  **2020:** .NET 5 unifies everything into one platform, simply called **.NET**.
+1.  **2002:** .NET Framework (Windows-only, closed source)
+2.  **2004:** Mono (Community-driven, cross-platform, open source)
+3.  **2011:** Xamarin (Mono for Android, MonoTouch for iOS)
+4.  **2016:** Microsoft acquires Xamarin & releases .NET Core (Modern, cross-platform, open source)
+5.  **2020:** .NET 5 unifies everything into one platform, simply called **.NET** (cross-platform, open source)
