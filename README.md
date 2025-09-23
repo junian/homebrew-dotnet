@@ -61,7 +61,7 @@ brew uninstall junian/dotnet/dotnet-sdk@<version>
 
 ## Where is .NET 4 / .NET Core 4?
 
-There is no .NET 4 or .NET Core 4. To avoid confusion, version 4.x is strictly for .NET Framework, only on Windows.
+There is no .NET 4 or .NET Core 4. To avoid confusion, version 4.x is strictly for [.NET Framework](https://dotnet.microsoft.com/en-us/download/dotnet-framework), can only run on Windows.
 Microsoft transition from **.NET Core** to _just_ **.NET** starting from version 5.
 
 The closest thing with .NET Framework 4.X on macOS is [Mono MDK](#mono-mdk-version).
