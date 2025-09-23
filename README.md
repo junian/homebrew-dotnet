@@ -2,7 +2,7 @@
 
 All .NET (dotnet) version of SDKs and Runtimes Homebrew Tap.
 
-The purpose of this homebrew 
+The purpose of this homebrew is to be able to install .NET SDK side-by-side on macOS.
 
 ## How to Use
 
@@ -23,6 +23,10 @@ You can also uninstall .NET version as you wish.
 ```shell
 brew uninstall junian/dotnet/dotnet-sdk@<version>
 ```
+
+> [!NOTE]
+> 
+> If you're currently using .NET formula from official `homebrew-cask`, you need to zap it first e.g., `brew uninstall --zap dotnet-sdk`.
 
 ## .NET SDK Versions
 
