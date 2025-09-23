@@ -24,7 +24,7 @@ You can also uninstall .NET version as you wish.
 brew uninstall junian/dotnet/dotnet-sdk@<version>
 ```
 
-## Versions
+## .NET SDK Versions
 
 
 | Version | Formula |
@@ -35,6 +35,11 @@ brew uninstall junian/dotnet/dotnet-sdk@<version>
 | .NET 7 | `dotnet-sdk@7.0` |
 | .NET 6.0 (LTS) | `dotnet-sdk@6.0` |
 | .NET 5.0 | `dotnet-sdk@5.0` |
+
+## .NET Core SDK Versions
+
+| Version | Formula |
+|---------|---------|
 | .NET Core 3.1 (LTS) | `dotnet-sdk@3.1` |
 | .NET Core 3.0 | `dotnet-sdk@3.0` |
 | .NET Core 2.2 | `dotnet-sdk@2.2` |
@@ -43,6 +48,11 @@ brew uninstall junian/dotnet/dotnet-sdk@<version>
 | .NET Core 1.1 | `dotnet-sdk@1.1` |
 | .NET Core 1.0 | `dotnet-sdk@1.0` |
 
+## Mono MDK Version
 
+| Version | Formula |
+|---------|---------|
+| Mono MDK 6.12 | `mono-mdk@6.12` |
 
+## Xamarin Versions
 
