@@ -22,7 +22,7 @@ brew tap junian/homebrew-dotnet
 
 ### Installation
 
-Then you can install .NET version as you wish.
+You can install .NET version as you wish.
 
 ```shell
 brew install dotnet-sdk@<version>
@@ -39,7 +39,7 @@ brew install junian/dotnet/dotnet-sdk@<version>
 You can also uninstall .NET version as you wish.
 
 ```shell
-brew uninstall junian/dotnet/dotnet-sdk@<version>
+brew uninstall dotnet-sdk@<version>
 ```
 
 Or
