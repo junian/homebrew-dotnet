@@ -1,4 +1,4 @@
-cask "visual-studio" do
+cask "visual-studio@2022" do
   arch arm: "arm64", intel: "x64"
 
   on_arm do
