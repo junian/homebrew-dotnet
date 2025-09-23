@@ -56,3 +56,14 @@ brew uninstall junian/dotnet/dotnet-sdk@<version>
 
 ## Xamarin Versions
 
+| Version | Formula |
+|---------|---------|
+| Xamarin Mac | `xamarin-mac@9.3` |
+| Xamarin iOS | `xamarin-ios@16.4` |
+| Xamarin Android | `xamarin-android@13.2` |
+
+## Visual Studio for Mac
+
+| Version | Formula |
+|---------|---------|
+| Visual Studio 2022 for Mac | `visual-studio@2022` |
