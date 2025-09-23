@@ -78,3 +78,13 @@ Following apps requires [Mono MDK](#mono-mdk-version).
 | Version | Formula |
 |---------|---------|
 | Visual Studio 2022 for Mac | `visual-studio@2022` |
+
+## Brief History of .NET
+
+If you're confused with .NET version and naming, here's a brief history:
+
+1.  **2002:** .NET Framework (Windows-only)
+2.  **2004:** Mono (Community-driven, cross-platform)
+3.  **2011:** Xamarin (Mono for mobile)
+4.  **2016:** Microsoft acquires Xamarin & releases .NET Core (Modern, cross-platform)
+5.  **2020:** .NET 5 unifies everything into one platform, simply called **.NET**.
