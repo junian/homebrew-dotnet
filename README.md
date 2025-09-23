@@ -55,6 +55,8 @@ Microsoft transition from **.NET Core** to _just_ **.NET** starting from version
 
 ## Mono MDK Version
 
+Before Microsoft created a cross-platform .NET, there is a community-developed .NET-compatible implementation called Mono.
+
 | Version | Formula |
 |---------|---------|
 | Mono MDK 6.12 | `mono-mdk@6.12` |
