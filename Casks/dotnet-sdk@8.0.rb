@@ -6,7 +6,7 @@ cask "dotnet-sdk@8.0" do
          intel: "6ea82992ea66a75325d7a5ffe10bf2face4d9417ae16cb098483f17e144bffc7"
 
   url "https://builds.dotnet.microsoft.com/dotnet/Sdk/#{version}/dotnet-sdk-#{version}-osx-#{arch}.pkg"
-  name ".NET SDK"
+  name ".NET 8 SDK (LTS)"
   desc "Developer platform"
   homepage "https://www.microsoft.com/net/core#macos"
 
