@@ -1,4 +1,4 @@
-cask "xamarin-android@13" do
+cask "xamarin-android@13.2" do
   version "13.2.2.0,8cbf56b1-ef0d-466f-8cfe-fae4ba8c5080,e9e853fee3169b1c5128098942f19120"
   sha256 "aeb215d33324f8d8dbf41aae2a987249433a7a4c264588384a40695c162877f4"
 
