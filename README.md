@@ -56,6 +56,8 @@ brew uninstall junian/dotnet/dotnet-sdk@<version>
 
 ## Xamarin Versions
 
+Following packages depend on [Mono MDK](#mono-mdk-version).
+
 | Version | Formula |
 |---------|---------|
 | Xamarin Mac | `xamarin-mac@9.3` |
@@ -63,6 +65,8 @@ brew uninstall junian/dotnet/dotnet-sdk@<version>
 | Xamarin Android | `xamarin-android@13.2` |
 
 ## Visual Studio for Mac
+
+Following apps requires [Mono MDK](#mono-mdk-version).
 
 | Version | Formula |
 |---------|---------|
