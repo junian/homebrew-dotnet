@@ -1,8 +1,9 @@
-cask "dotnet-sdk@3" do
-  arch intel: "x64"
+cask "dotnet-sdk@3.0" do
+  arch arm: "x64", intel: "x64"
 
   version "3.0.103"
-  sha256 intel: "d614b7e5605be7a47fa3cb98e4d6e70030aac9196287046c3abe23ead3e400cb"
+  sha256   arm: "d614b7e5605be7a47fa3cb98e4d6e70030aac9196287046c3abe23ead3e400cb",
+         intel: "d614b7e5605be7a47fa3cb98e4d6e70030aac9196287046c3abe23ead3e400cb"
 
   url "https://builds.dotnet.microsoft.com/dotnet/Sdk/#{version}/dotnet-sdk-#{version}-osx-#{arch}.pkg"
   name ".NET SDK"
