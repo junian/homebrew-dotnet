@@ -28,7 +28,7 @@ cask "dotnet-sdk@1.0" do
 
   depends_on macos: ">= :ventura"
 
-  pkg "dotnet-sdk-#{version}-osx-#{arch}.pkg"
+  pkg "dotnet-dev-osx-#{arch}.#{version}.pkg"
 
   uninstall pkgutil: [
     "com.microsoft.dotnet.*#{version.major_minor}*#{arch}",
