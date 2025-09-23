@@ -36,6 +36,11 @@ brew uninstall junian/dotnet/dotnet-sdk@<version>
 | .NET 6.0 (LTS) | `dotnet-sdk@6.0` |
 | .NET 5.0 | `dotnet-sdk@5.0` |
 
+## Where is .NET 4 / .NET Core 4?
+
+There is no .NET 4 or .NET Core 4. To avoid confusion, version 4.x is strictly for .NET Framework, only on Windows.
+Microsoft transition from **.NET Core** to _just_ **.NET** starting from version 5.
+
 ## .NET Core SDK Versions
 
 | Version | Formula |
