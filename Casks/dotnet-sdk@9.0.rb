@@ -6,7 +6,7 @@ cask "dotnet-sdk@9.0" do
          intel: "02eaf71a1485949b95d8b75e47c92439726e30eba3565e5dace0e120e9a2384d"
 
   url "https://builds.dotnet.microsoft.com/dotnet/Sdk/#{version}/dotnet-sdk-#{version}-osx-#{arch}.pkg"
-  name ".NET SDK"
+  name ".NET 9 SDK"
   desc "Developer platform"
   homepage "https://www.microsoft.com/net/core#macos"
 
