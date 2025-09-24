@@ -142,3 +142,6 @@ You need to install .NET 10 then run:
 
 If there are any update, it'll update the cask file.
 Commit the changes and push.
+
+**TODO**: Must be nice if it can be done in GitHub workflow.
+
