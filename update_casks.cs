@@ -1,69 +1,133 @@
 #!/usr/bin/env dotnet run
 
+#:package Newtonsoft.Json@13.0.4
+
 using System;
 using System.IO;
 using System.Text.RegularExpressions;
+using Newtonsoft.Json;
 using System.Collections.Generic;
-using System.Text.Json;
 using System.Diagnostics.CodeAnalysis;
 using System.Threading.Tasks;
+using System.Security.Cryptography;
 
 public class DotnetBuilds
 {
     public partial class DotnetReleases
     {
-        public string ChannelVersion { get; set; }
-        public string LatestRelease { get; set; }
-        public string LatestReleaseDate { get; set; }
-        public string LatestRuntime { get; set; }
-        public string LatestSdk { get; set; }
-        public string SupportPhase { get; set; }
-        public string ReleaseType { get; set; }
-        public Uri LifecyclePolicy { get; set; }
-        public List<Release> Releases { get; set; }
+        [JsonProperty("channel-version")]
+        public string? ChannelVersion { get; set; }
+
+        [JsonProperty("latest-release")]
+        public string? LatestRelease { get; set; }
+
+        [JsonProperty("latest-release-date")]
+        public string? LatestReleaseDate { get; set; }
+
+        [JsonProperty("latest-runtime")]
+        public string? LatestRuntime { get; set; }
+
+        [JsonProperty("latest-sdk")]
+        public string? LatestSdk { get; set; }
+
+        [JsonProperty("support-phase")]
+        public string? SupportPhase { get; set; }
+
+        [JsonProperty("release-type")]
+        public string? ReleaseType { get; set; }
+
+        [JsonProperty("releases")]
+        public List<Release>? Releases { get; set; }
     }
 
     public partial class Release
     {
-        public string ReleaseDate { get; set; }
-        public string ReleaseVersion { get; set; }
+        [JsonProperty("release-date")]
+        public string? ReleaseDate { get; set; }
+
+        [JsonProperty("release-version")]
+        public string? ReleaseVersion { get; set; }
+
+        [JsonProperty("security")]
         public bool Security { get; set; }
-        // public List<object> CveList { get; set; }
-        public Uri ReleaseNotes { get; set; }
-        public Runtime Runtime { get; set; }
-        public Sdk Sdk { get; set; }
+
+        [JsonProperty("release-notes")]
+        public Uri? ReleaseNotes { get; set; }
+
+        [JsonProperty("runtime")]
+        public Runtime? Runtime { get; set; }
+
+        [JsonProperty("sdk")]
+        public Sdk? Sdk { get; set; }
     }
 
     public partial class Runtime
     {
-        public string Version { get; set; }
-        public string VersionDisplay { get; set; }
-        public string VsVersion { get; set; }
-        public string VsMacVersion { get; set; }
-        public List<File> Files { get; set; }
+        [JsonProperty("version")]
+        public string? Version { get; set; }
+
+        [JsonProperty("version-display")]
+        public string? VersionDisplay { get; set; }
+
+        [JsonProperty("vs-version")]
+        public string? VsVersion { get; set; }
+
+        [JsonProperty("vs-mac-version")]
+        public string? VsMacVersion { get; set; }
+
+        [JsonProperty("files")]
+        public List<File>? Files { get; set; }
     }
 
     public partial class File
     {
-        public string Name { get; set; }
-        public string Rid { get; set; }
-        public Uri Url { get; set; }
-        public string Hash { get; set; }
+        [JsonProperty("name")]
+        public string? Name { get; set; }
+
+        [JsonProperty("rid")]
+        public string? Rid { get; set; }
+
+        [JsonProperty("url")]
+        public Uri? Url { get; set; }
+
+        [JsonProperty("hash")]
+        public string? Hash { get; set; }
     }
 
     public partial class Sdk
     {
-        public string Version { get; set; }
-        public string VersionDisplay { get; set; }
-        public string RuntimeVersion { get; set; }
-        public string VsVersion { get; set; }
-        public string VsMacVersion { get; set; }
-        public string VsSupport { get; set; }
-        public string VsMacSupport { get; set; }
-        public string CsharpVersion { get; set; }
-        public string FsharpVersion { get; set; }
-        public string VbVersion { get; set; }
-        public List<File> Files { get; set; }
+        [JsonProperty("version")]
+        public string? Version { get; set; }
+
+        [JsonProperty("version-display")]
+        public string? VersionDisplay { get; set; }
+
+        [JsonProperty("runtime-version")]
+        public string? RuntimeVersion { get; set; }
+
+        [JsonProperty("vs-version")]
+        public string? VsVersion { get; set; }
+
+        [JsonProperty("vs-mac-version")]
+        public string? VsMacVersion { get; set; }
+
+        [JsonProperty("vs-support")]
+        public string? VsSupport { get; set; }
+
+        [JsonProperty("vs-mac-support")]
+        public string? VsMacSupport { get; set; }
+
+        [JsonProperty("csharp-version")]
+        public string? CsharpVersion { get; set; }
+
+        [JsonProperty("fsharp-version")]
+        public string? FsharpVersion { get; set; }
+
+        [JsonProperty("vb-version")]
+        public string? VbVersion { get; set; }
+
+        [JsonProperty("files")]
+        public List<File>? Files { get; set; }
     }
 }
 
@@ -137,7 +201,7 @@ public class RubyCaskUpdater
         return content;
     }
 
-  public static async Task<DotnetBuilds.DotnetReleases> GetDotnetReleasesAsync(string url)
+    public static async Task<DotnetBuilds.DotnetReleases?> GetDotnetReleasesAsync(string url)
     {
         using var client = new HttpClient();
 
@@ -147,7 +211,8 @@ public class RubyCaskUpdater
             response.EnsureSuccessStatusCode();
 
             var json = await response.Content.ReadAsStringAsync();
-            var result = JsonSerializer.Deserialize<DotnetBuilds.DotnetReleases>(json);
+            // Console.WriteLine(json);
+            var result = JsonConvert.DeserializeObject<DotnetBuilds.DotnetReleases>(json);
 
             return result;
         }
@@ -163,54 +228,114 @@ public class RubyCaskUpdater
         }
     }
 
+    public static async Task<string> DownloadAndCalculateSha256Async(Uri fileUri)
+    {
+        if (fileUri == null)
+            throw new ArgumentNullException(nameof(fileUri));
+
+        using (var httpClient = new HttpClient())
+        using (var sha256 = SHA256.Create())
+        {
+            httpClient.Timeout = TimeSpan.FromMinutes(5);
+
+            using (var response = await httpClient.GetAsync(fileUri, HttpCompletionOption.ResponseHeadersRead))
+            {
+                response.EnsureSuccessStatusCode();
+
+                using (var stream = await response.Content.ReadAsStreamAsync())
+                {
+                    byte[] hashBytes = await sha256.ComputeHashAsync(stream);
+                    return BitConverter.ToString(hashBytes).Replace("-", "").ToLowerInvariant();
+                }
+            }
+        }
+    }
+
+    const string DotnetArm64 = "dotnet-sdk-osx-arm64.pkg";
+    const string DotnetX64 = "dotnet-sdk-osx-x64.pkg";
+
     // Example usage
     public static async Task Main(string[] args)
     {
-        try
+        var supportedVersions = new List<string>
         {
-            string filePath = "./Casks/dotnet-sdk@10.0.rb"; // Path to your Ruby cask file
+            "10.0",
+            "9.0",
+            "8.0",
+        };
 
-            // Read current values
-            Console.WriteLine("Reading cask file...");
-            var currentData = ReadCaskFile(filePath);
-
-            Console.WriteLine($"Current version: {currentData.Version}");
-            Console.WriteLine($"Current SHA256 ARM: {currentData.Sha256Arm}");
-            Console.WriteLine($"Current SHA256 Intel: {currentData.Sha256Intel}");
-
-            var dotnetRelease = await GetDotnetReleasesAsync("https://builds.dotnet.microsoft.com/dotnet/release-metadata/10.0/releases.json");
-
-            if (currentData.Version == dotnetRelease.LatestSdk)
-                return;
-
-            // Update with new values
-            var newData = new CaskData
+        foreach (var version in supportedVersions)
+        {
+            try
             {
-                Version = dotnetRelease.LatestSdk, // New version
-                Sha256Arm = "new_arm_sha256_value_here", // New ARM SHA256
-                Sha256Intel = "new_intel_sha256_value_here" // New Intel SHA256
-            };
-        
+                Console.WriteLine($"Checking .NET {version}");
+                var filePath = $"./Casks/dotnet-sdk@{version}.rb"; // Path to your Ruby cask file
 
-            // Create backup
-            // string backupPath = filePath + ".backup";
-            // File.Copy(filePath, backupPath, true);
-            // Console.WriteLine($"Backup created: {backupPath}");
+                // Read current values
+                var currentData = ReadCaskFile(filePath);
 
-            // Update the file
-            UpdateCaskFile(filePath, newData);
-            Console.WriteLine("Cask file updated successfully!");
+                Console.WriteLine($"Current version: {currentData.Version}");
+                Console.WriteLine($"Current SHA256 ARM: {currentData.Sha256Arm}");
+                Console.WriteLine($"Current SHA256 Intel: {currentData.Sha256Intel}");
+                Console.WriteLine("");
 
-            // Verify the changes
-            var updatedData = ReadCaskFile(filePath);
-            Console.WriteLine($"\nUpdated version: {updatedData.Version}");
-            Console.WriteLine($"Updated SHA256 ARM: {updatedData.Sha256Arm}");
-            Console.WriteLine($"Updated SHA256 Intel: {updatedData.Sha256Intel}");
+                var dotnetRelease = await GetDotnetReleasesAsync($"https://builds.dotnet.microsoft.com/dotnet/release-metadata/{version}/releases.json");
+                if (dotnetRelease.LatestSdk == null || currentData.Version == dotnetRelease.LatestSdk)
+                {
+                    Console.WriteLine($"No new release for .NET {version}");
+                    Console.WriteLine("");
+                    continue;
+                }
 
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"Error: {ex.Message}");
+                var newVersion = dotnetRelease.LatestSdk;
+                Console.WriteLine($"New Release for .NET {version} is Available: {newVersion}");
+
+                var sdk = dotnetRelease?.Releases?.First()?.Sdk;
+                if (sdk == null)
+                    throw new Exception("SDK is NULL");
+
+                var arm64 = sdk.Files?.SingleOrDefault(x => x.Name == DotnetArm64);
+                if (arm64 == null || arm64.Url == null)
+                    throw new Exception($".NET {version}-arm64 URL not found");
+
+                Console.WriteLine($"Calculating SHA-256 {arm64.Url}");
+                var sha256arm64 = await DownloadAndCalculateSha256Async(arm64.Url);
+                Console.WriteLine(sha256arm64);
+                Console.WriteLine("");
+
+                var x64 = sdk.Files?.SingleOrDefault(x => x.Name == DotnetX64);
+                if (x64 == null || x64.Url == null)
+                    throw new Exception($".NET {version}-x64 URL not found");
+
+                Console.WriteLine($"Calculating SHA-256 {x64.Url}");
+                var sha256x64 = await DownloadAndCalculateSha256Async(x64.Url);
+                Console.WriteLine(sha256x64);
+                Console.WriteLine("");
+
+                // Update with new values
+                var newData = new CaskData
+                {
+                    Version = newVersion, // New version
+                    Sha256Arm = sha256arm64, // New ARM SHA256
+                    Sha256Intel = sha256x64 // New Intel SHA256
+                };
+
+                // Update the file
+                UpdateCaskFile(filePath, newData);
+                Console.WriteLine($".NET {version} Cask file updated successfully!");
+                Console.WriteLine("");
+
+                // Verify the changes
+                var updatedData = ReadCaskFile(filePath);
+                Console.WriteLine($"Updated version: {updatedData.Version}");
+                Console.WriteLine($"Updated SHA256 ARM: {updatedData.Sha256Arm}");
+                Console.WriteLine($"Updated SHA256 Intel: {updatedData.Sha256Intel}");
+                Console.WriteLine("");
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
         }
     }
 }
