@@ -52,12 +52,14 @@ brew uninstall junian/dotnet/dotnet-sdk@<version>
 
 | Version | Formula |
 |---------|---------|
-| .NET 10 RC-1 | `dotnet-sdk@10.0` |
-| .NET 9 | `dotnet-sdk@9.0` |
-| .NET 8 (LTS) | `dotnet-sdk@8.0` |
+| ⭐️ .NET 10 RC-1 | `dotnet-sdk@10.0` |
+| ⭐️ .NET 9 | `dotnet-sdk@9.0` |
+| ⭐️ .NET 8 (LTS) | `dotnet-sdk@8.0` |
 | .NET 7 | `dotnet-sdk@7.0` |
 | .NET 6.0 (LTS) | `dotnet-sdk@6.0` |
 | .NET 5.0 | `dotnet-sdk@5.0` |
+
+⭐️ [Supported versions](https://dotnet.microsoft.com/en-us/download/dotnet)
 
 ## Where is .NET 4 / .NET Core 4?
 
