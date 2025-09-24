@@ -130,3 +130,15 @@ If you're confused with .NET version and naming, here's a brief history:
 3.  **2011:** Xamarin (Mono for Android, MonoTouch for iOS)
 4.  **2016:** Microsoft acquires Xamarin & releases .NET Core (Modern, cross-platform, open source)
 5.  **2020:** .NET 5 unifies everything into one platform, simply called **.NET** (cross-platform, open source)
+
+## Cask Updater
+
+I wrote a simple script to update the supported .NET versions Casks automatically.
+You need to install .NET 10 then run:
+
+```bash
+./update_casks.cs
+```
+
+If there are any update, it'll update the cask file.
+Commit the changes and push.
