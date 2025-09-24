@@ -81,7 +81,12 @@ The closest thing with .NET Framework 4.X on macOS is [Mono MDK](#mono-mdk-versi
 ## Special Note for .NET Core 3.1 and .NET 5
 
 If you install **.NET Core 3.1** or **.NET 5** on Apple Sillicon Mac, the `dotnet` binary is located at `/usr/local/share/dotnet/x64/dotnet`.
-You can make an alias such as `alias dotnet-x64=/usr/local/share/dotnet/x64/dotnet`.
+You can make an alias such as:
+
+```shell
+alias dotnet-x64=/usr/local/share/dotnet/x64/dotnet
+```
+
 Then use it in command like like:
 
 ```console
