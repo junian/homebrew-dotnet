@@ -230,29 +230,22 @@ public class RubyCaskUpdater
 
     public static async Task<string> DownloadAndCalculateSha256Async(Uri fileUri)
     {
-        if (fileUri == null)
-            throw new ArgumentNullException(nameof(fileUri));
+        ArgumentNullException.ThrowIfNull(fileUri);
 
-        using (var httpClient = new HttpClient())
-        using (var sha256 = SHA256.Create())
-        {
-            httpClient.Timeout = TimeSpan.FromMinutes(5);
+        using var httpClient = new HttpClient();
+        using var sha256 = SHA256.Create();
+        httpClient.Timeout = TimeSpan.FromMinutes(5);
 
-            using (var response = await httpClient.GetAsync(fileUri, HttpCompletionOption.ResponseHeadersRead))
-            {
-                response.EnsureSuccessStatusCode();
+        using var response = await httpClient.GetAsync(fileUri, HttpCompletionOption.ResponseHeadersRead);
+        response.EnsureSuccessStatusCode();
 
-                using (var stream = await response.Content.ReadAsStreamAsync())
-                {
-                    byte[] hashBytes = await sha256.ComputeHashAsync(stream);
-                    return BitConverter.ToString(hashBytes).Replace("-", "").ToLowerInvariant();
-                }
-            }
-        }
+        using var stream = await response.Content.ReadAsStreamAsync();
+        byte[] hashBytes = await sha256.ComputeHashAsync(stream);
+        return BitConverter.ToString(hashBytes).Replace("-", "").ToLowerInvariant();
     }
 
-    const string DotnetArm64 = "dotnet-sdk-osx-arm64.pkg";
-    const string DotnetX64 = "dotnet-sdk-osx-x64.pkg";
+    const string DotnetArm64Filename = "dotnet-sdk-osx-arm64.pkg";
+    const string DotnetX64Filename = "dotnet-sdk-osx-x64.pkg";
 
     // Example usage
     public static async Task Main(string[] args)
@@ -287,35 +280,33 @@ public class RubyCaskUpdater
                     continue;
                 }
 
-                var newVersion = dotnetRelease.LatestSdk;
-                Console.WriteLine($"New Release for .NET {version} is Available: {newVersion}");
+                var latestSdkVersion = dotnetRelease.LatestSdk;
+                Console.WriteLine($"New Release for .NET {version} is Available: {latestSdkVersion}");
 
-                var sdk = dotnetRelease?.Releases?.First()?.Sdk;
-                if (sdk == null)
-                    throw new Exception("SDK is NULL");
+                var sdkList = (dotnetRelease?.Releases?.First()?.Sdk) ?? throw new Exception("SDK is NULL");
 
-                var arm64 = sdk.Files?.SingleOrDefault(x => x.Name == DotnetArm64);
-                if (arm64 == null || arm64.Url == null)
+                var arm64Release = sdkList.Files?.SingleOrDefault(x => x.Name == DotnetArm64Filename);
+                if (arm64Release == null || arm64Release.Url == null)
                     throw new Exception($".NET {version}-arm64 URL not found");
 
-                Console.WriteLine($"Calculating SHA-256 {arm64.Url}");
-                var sha256arm64 = await DownloadAndCalculateSha256Async(arm64.Url);
+                Console.WriteLine($"Calculating SHA-256 {arm64Release.Url}");
+                var sha256arm64 = await DownloadAndCalculateSha256Async(arm64Release.Url);
                 Console.WriteLine(sha256arm64);
                 Console.WriteLine("");
 
-                var x64 = sdk.Files?.SingleOrDefault(x => x.Name == DotnetX64);
-                if (x64 == null || x64.Url == null)
+                var x64Release = sdkList.Files?.SingleOrDefault(x => x.Name == DotnetX64Filename);
+                if (x64Release == null || x64Release.Url == null)
                     throw new Exception($".NET {version}-x64 URL not found");
 
-                Console.WriteLine($"Calculating SHA-256 {x64.Url}");
-                var sha256x64 = await DownloadAndCalculateSha256Async(x64.Url);
+                Console.WriteLine($"Calculating SHA-256 {x64Release.Url}");
+                var sha256x64 = await DownloadAndCalculateSha256Async(x64Release.Url);
                 Console.WriteLine(sha256x64);
                 Console.WriteLine("");
 
                 // Update with new values
                 var newData = new CaskData
                 {
-                    Version = newVersion, // New version
+                    Version = latestSdkVersion, // New version
                     Sha256Arm = sha256arm64, // New ARM SHA256
                     Sha256Intel = sha256x64 // New Intel SHA256
                 };
@@ -332,7 +323,7 @@ public class RubyCaskUpdater
                 Console.WriteLine($"Updated SHA256 Intel: {updatedData.Sha256Intel}");
                 Console.WriteLine("");
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.ToString());
             }
