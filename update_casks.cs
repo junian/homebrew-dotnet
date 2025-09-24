@@ -280,7 +280,7 @@ public class RubyCaskUpdater
                 Console.WriteLine("");
 
                 var dotnetRelease = await GetDotnetReleasesAsync($"https://builds.dotnet.microsoft.com/dotnet/release-metadata/{version}/releases.json");
-                if (dotnetRelease.LatestSdk == null || currentData.Version == dotnetRelease.LatestSdk)
+                if (dotnetRelease == null || dotnetRelease.LatestSdk == null || currentData.Version == dotnetRelease.LatestSdk)
                 {
                     Console.WriteLine($"No new release for .NET {version}");
                     Console.WriteLine("");
