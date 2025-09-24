@@ -3,6 +3,69 @@
 using System;
 using System.IO;
 using System.Text.RegularExpressions;
+using System.Collections.Generic;
+using System.Text.Json;
+using System.Diagnostics.CodeAnalysis;
+using System.Threading.Tasks;
+
+public class DotnetBuilds
+{
+    public partial class DotnetReleases
+    {
+        public string ChannelVersion { get; set; }
+        public string LatestRelease { get; set; }
+        public string LatestReleaseDate { get; set; }
+        public string LatestRuntime { get; set; }
+        public string LatestSdk { get; set; }
+        public string SupportPhase { get; set; }
+        public string ReleaseType { get; set; }
+        public Uri LifecyclePolicy { get; set; }
+        public List<Release> Releases { get; set; }
+    }
+
+    public partial class Release
+    {
+        public string ReleaseDate { get; set; }
+        public string ReleaseVersion { get; set; }
+        public bool Security { get; set; }
+        // public List<object> CveList { get; set; }
+        public Uri ReleaseNotes { get; set; }
+        public Runtime Runtime { get; set; }
+        public Sdk Sdk { get; set; }
+    }
+
+    public partial class Runtime
+    {
+        public string Version { get; set; }
+        public string VersionDisplay { get; set; }
+        public string VsVersion { get; set; }
+        public string VsMacVersion { get; set; }
+        public List<File> Files { get; set; }
+    }
+
+    public partial class File
+    {
+        public string Name { get; set; }
+        public string Rid { get; set; }
+        public Uri Url { get; set; }
+        public string Hash { get; set; }
+    }
+
+    public partial class Sdk
+    {
+        public string Version { get; set; }
+        public string VersionDisplay { get; set; }
+        public string RuntimeVersion { get; set; }
+        public string VsVersion { get; set; }
+        public string VsMacVersion { get; set; }
+        public string VsSupport { get; set; }
+        public string VsMacSupport { get; set; }
+        public string CsharpVersion { get; set; }
+        public string FsharpVersion { get; set; }
+        public string VbVersion { get; set; }
+        public List<File> Files { get; set; }
+    }
+}
 
 public class RubyCaskUpdater
 {
@@ -74,8 +137,34 @@ public class RubyCaskUpdater
         return content;
     }
 
+  public static async Task<DotnetBuilds.DotnetReleases> GetDotnetReleasesAsync(string url)
+    {
+        using var client = new HttpClient();
+
+        try
+        {
+            var response = await client.GetAsync(url);
+            response.EnsureSuccessStatusCode();
+
+            var json = await response.Content.ReadAsStringAsync();
+            var result = JsonSerializer.Deserialize<DotnetBuilds.DotnetReleases>(json);
+
+            return result;
+        }
+        catch (HttpRequestException ex)
+        {
+            Console.WriteLine($"HTTP Error: {ex.Message}");
+            return null;
+        }
+        catch (JsonException ex)
+        {
+            Console.WriteLine($"JSON Error: {ex.Message}");
+            return null;
+        }
+    }
+
     // Example usage
-    public static void Main(string[] args)
+    public static async Task Main(string[] args)
     {
         try
         {
@@ -89,13 +178,19 @@ public class RubyCaskUpdater
             Console.WriteLine($"Current SHA256 ARM: {currentData.Sha256Arm}");
             Console.WriteLine($"Current SHA256 Intel: {currentData.Sha256Intel}");
 
+            var dotnetRelease = await GetDotnetReleasesAsync("https://builds.dotnet.microsoft.com/dotnet/release-metadata/10.0/releases.json");
+
+            if (currentData.Version == dotnetRelease.LatestSdk)
+                return;
+
             // Update with new values
             var newData = new CaskData
             {
-                Version = "10.0.100-rc.1.25451.108", // New version
+                Version = dotnetRelease.LatestSdk, // New version
                 Sha256Arm = "new_arm_sha256_value_here", // New ARM SHA256
                 Sha256Intel = "new_intel_sha256_value_here" // New Intel SHA256
             };
+        
 
             // Create backup
             // string backupPath = filePath + ".backup";
