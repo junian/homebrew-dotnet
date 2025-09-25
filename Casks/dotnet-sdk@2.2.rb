@@ -6,7 +6,7 @@ cask "dotnet-sdk@2.2" do
          intel: "ca1fe559025ee3c41f1664eba26079a705c42865dbf5c83c0160e682e9ad83cb"
 
   url "https://builds.dotnet.microsoft.com/dotnet/Sdk/#{version}/dotnet-sdk-#{version}-osx-#{arch}.pkg"
-  name ".NET Core SDK 2.2"
+  name ".NET Core 2.2 SDK"
   desc "Developer platform"
   homepage "https://www.microsoft.com/net/core#macos"
 
