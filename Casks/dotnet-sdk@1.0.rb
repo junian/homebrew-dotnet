@@ -6,7 +6,7 @@ cask "dotnet-sdk@1.0" do
          intel: "0769d804e226e96d377b48090718dc9b60c2ab9cc73e7a8ff65868d8e814b63a"
 
   url "https://builds.dotnet.microsoft.com/dotnet/Sdk/#{version}/dotnet-dev-osx-#{arch}.#{version}.pkg"
-  name ".NET Core SDK 1.0"
+  name ".NET Core 1.0 SDK"
   desc "Developer platform"
   homepage "https://www.microsoft.com/net/core#macos"
 
