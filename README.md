@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://upload.wikimedia.org/wikipedia/commons/9/95/Homebrew_logo.svg" width="96px" alt="Microsoft dotnet logo" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://upload.wikimedia.org/wikipedia/commons/7/7d/Microsoft_.NET_logo.svg" width="96px" alt="Microsoft dotnet logo" />
+<img src="https://raw.githubusercontent.com/junian/commons-media/refs/heads/master/svg/homebrew-logo.svg" width="96px" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://raw.githubusercontent.com/junian/commons-media/refs/heads/master/svg/microsoft-dotnet-logo.svg" width="96px" />
 
 # Homebrew dotnet
 
