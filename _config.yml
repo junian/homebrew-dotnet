@@ -1,0 +1,27 @@
+title: Homebrew dotnet
+description: Install multiple dotnet SDKs on macOS with Brew
+show_downloads: false
+google_analytics: G-MKQK789F6L
+theme: jekyll-theme-primer
+
+markdown: CommonMarkGhPages
+commonmark:
+  options: ["UNSAFE", "SMART", "FOOTNOTES"]
+  extensions: ["strikethrough", "autolink", "table", "tagfilter"]
+
+github:
+  is_project_page: false
+  
+plugins:
+  - jekyll-redirect-from
+  - jekyll-sitemap
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-commonmark-ghpages
+
+whitelist:
+  - jekyll-redirect-from
+  - jekyll-sitemap
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-commonmark-ghpages
