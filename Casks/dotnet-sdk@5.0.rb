@@ -6,7 +6,7 @@ cask "dotnet-sdk@5.0" do
          intel: "ba10d0eb89480b8db37da6945766b167353fa342289c9a92eb102e12b4a25701"
 
   url "https://builds.dotnet.microsoft.com/dotnet/Sdk/#{version}/dotnet-sdk-#{version}-osx-#{arch}.pkg"
-  name ".NET SDK 5.0"
+  name ".NET 5.0 SDK"
   desc "Developer platform"
   homepage "https://www.microsoft.com/net/core#macos"
 
