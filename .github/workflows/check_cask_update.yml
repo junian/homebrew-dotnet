@@ -7,10 +7,6 @@ on:
   workflow_dispatch:
   schedule:
     - cron: '0 0,4,8,12,16,20 * * *'
-  # push:
-  #   branches: [ "master" ]
-  # pull_request:
-  #   branches: [ "master" ]
 
 jobs:
   build:
@@ -27,8 +23,8 @@ jobs:
       run: dotnet run update_casks.cs
     - name: Commit changes if any
       run: |
-        git config --global user.name "junian.dev bot"
-        git config --global user.email "bot@junian.dev"
+        git config --global user.name "github-actions[bot]"
+        git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
         if [[ -n "$(git status --porcelain)" ]]; then
           git add -A
           git commit -m "dotnet version update"
