@@ -255,7 +255,8 @@ public class RubyCaskUpdater
             "10.0",
             "9.0",
             "8.0",
-            "6.0",
+            // "7.0", // Out of support May 14, 2024
+            // "6.0", // Out of support November 12, 2024
         };
 
         foreach (var version in supportedVersions)
