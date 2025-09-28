@@ -255,6 +255,7 @@ public class RubyCaskUpdater
             "10.0",
             "9.0",
             "8.0",
+            "6.0",
         };
 
         foreach (var version in supportedVersions)
