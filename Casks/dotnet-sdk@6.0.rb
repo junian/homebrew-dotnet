@@ -1,9 +1,9 @@
 cask "dotnet-sdk@6.0" do
   arch arm: "arm64", intel: "x64"
 
-  version "6.0.428"
-  sha256 arm:   "a613c068212533d6b034cd614daf63633abcfe6697bc016d76a4ece1ce577c7f",
-         intel: "17bd1338041f37b242379b78a92ed9a9529c79894f13e47ae1ecf890a339d3b2"
+  version "6.0.427"
+  sha256 arm:   "32d5651e8e67b929f43f00abcee89b45beb409c094479a0e41087bc342c8ee46",
+         intel: "0cdbb4e556df7ec2dec8ac32c03ddb295f4f113fe27997f201b6b6781f6d63c6"
 
   url "https://builds.dotnet.microsoft.com/dotnet/Sdk/#{version}/dotnet-sdk-#{version}-osx-#{arch}.pkg"
   name ".NET 6.0 SDK (LTS)"
