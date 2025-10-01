@@ -9,26 +9,30 @@ on:
     - cron: '0 0,4,8,12,16,20 * * *'
 
 jobs:
-  build:
+  check-updates:
 
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v4
-      with:
-        dotnet-version: 10.0.*
-    - name: Run
-      run: dotnet run update_casks.cs
-    - name: Commit changes if any
-      run: |
-        git config --global user.name "github-actions[bot]"
-        git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-        if [[ -n "$(git status --porcelain)" ]]; then
-          git add -A
-          git commit -m "dotnet version update"
-          git push
-        else
-          echo "No changes to commit."
-        fi
+      - name: Checkout git repo
+        uses: actions/checkout@v4
+      
+      - name: Setup .NET SDK
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.*
+          
+      - name: Run update check
+        run: dotnet run update_casks.cs
+        
+      - name: Commit changes if any
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if [[ -n "$(git status --porcelain)" ]]; then
+            git add -A
+            git commit -m "dotnet version update"
+            git push
+          else
+            echo "No changes to commit."
+          fi
