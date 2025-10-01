@@ -1,7 +1,7 @@
 cask "dotnet-sdk@10.0" do
   arch arm: "arm64", intel: "x64"
 
-  version "10.0.100-rc.1.25451.107"
+  version "10.0.100-rc.1.25451.100"
   sha256 arm:   "de5e3009f820e52b179028a71623a26cea1d8941c799ea46ce3a669127f0847d",
          intel: "00b5d3054f19d4a82862dfb9e7357132d985effd397cdf4e68b2c3bad93eb817"
 
