@@ -40,7 +40,7 @@ whitelist:
 
 # Enable or disable the site search
 # Supports true (default) or false
-search_enabled: true
+search_enabled: false
 search:
   # Split pages into sections that can be searched individually
   # Supports 1 - 6, default: 2
@@ -89,26 +89,26 @@ heading_anchors: true
 
 # Aux links for the upper right navigation
 aux_links:
-  "GitHub":
-    - "https://github.com/junian"
+  "Home":
+    - "https://www.junian.dev/"
 
 # Makes Aux links open in a new tab. Default is false
-aux_links_new_tab: true
+aux_links_new_tab: false
 
 # Enable or disable the side/mobile menu globally
 # Nav menu can also be selectively enabled or disabled using page variables or the minimal layout
-nav_enabled: true
+nav_enabled: false
 
 # Sort order for navigation links
 # nav_sort: case_insensitive # default, equivalent to nil
 nav_sort: case_insensitive # Capital letters sorted before lowercase
 
 # External navigation links
-nav_external_links:
-  - title: Tech Blog
-    url: https://www.junian.net/
-  - title: YouTube
-    url: https://www.youtube.com/@JunianDev
+# nav_external_links:
+#   - title: Tech Blog
+#     url: https://www.junian.net/
+#   - title: YouTube
+#     url: https://www.youtube.com/@JunianDev
 
 # Show navigation error report
 nav_error_report: true # default is false/nil.
