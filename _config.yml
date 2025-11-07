@@ -3,7 +3,7 @@ description: Install multiple dotnet SDKs on macOS with Brew
 show_downloads: false
 google_analytics: G-MKQK789F6L
 # theme: just-the-docs
-remote_theme: junian/just-the-docs
+remote_theme: junian/jekyll-jtdocs
 
 markdown: CommonMarkGhPages
 commonmark:
