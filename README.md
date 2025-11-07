@@ -16,7 +16,6 @@ First, tap the repository:
 brew tap junian/homebrew-dotnet
 ````
 
-> [!NOTE]
 > If you are currently using the .NET formula from the official `homebrew-cask`, you should uninstall it first. For example:
 >
 > ```shell
