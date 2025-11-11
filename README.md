@@ -54,7 +54,7 @@ brew uninstall junian/dotnet/dotnet-sdk@<version>
 
 | Version               | Formula           |
 | --------------------- | ----------------- |
-| ⭐️ .NET 10 RC-2 (LTS) | `dotnet-sdk@10.0` |
+| ⭐️ .NET 10 (LTS).     | `dotnet-sdk@10.0` |
 | ⭐️ .NET 9             | `dotnet-sdk@9.0`  |
 | ⭐️ .NET 8 (LTS)       | `dotnet-sdk@8.0`  |
 | .NET 7                | `dotnet-sdk@7.0`  |
