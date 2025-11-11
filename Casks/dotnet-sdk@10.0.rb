@@ -1,9 +1,9 @@
 cask "dotnet-sdk@10.0" do
   arch arm: "arm64", intel: "x64"
 
-  version "10.0.100-rc.2.25502.107"
-  sha256 arm:   "cda7f488455749cfb33ede260d0a25715bd7b3588f67a3514107d76634e19c27",
-         intel: "6e89ba33aa1bbaaaf3b108195e14e3ac317de9675788f3e58ab1c7b1a8c851b1"
+  version "10.0.100"
+  sha256 arm:   "3ae5af0d9dd791e9472003ca38285f37cd1e4f7dea1c3b053e6f472ebc8753e8",
+         intel: "777e6269ea4d7a942db5704d61ce4a15342bf62ba961e6dc356350b302377d5e"
 
   url "https://builds.dotnet.microsoft.com/dotnet/Sdk/#{version}/dotnet-sdk-#{version}-osx-#{arch}.pkg"
   name ".NET 10 RC-1 SDK"
