@@ -30,10 +30,10 @@ Install the desired .NET version:
 brew install dotnet-sdk@<version>
 ```
 
-Or:
+For example:
 
 ```shell
-brew install junian/dotnet/dotnet-sdk@<version>
+brew install dotnet-sdk@10.0
 ```
 
 ### Uninstallation
@@ -44,10 +44,10 @@ Uninstall the desired .NET version:
 brew uninstall dotnet-sdk@<version>
 ```
 
-Or:
+For example:
 
 ```shell
-brew uninstall junian/dotnet/dotnet-sdk@<version>
+brew uninstall dotnet-sdk@9.0
 ```
 
 ## .NET SDK Versions
