@@ -14,7 +14,7 @@ First, tap the repository:
 
 ```shell
 brew tap junian/homebrew-dotnet
-````
+```
 
 > If you are currently using the .NET formula from the official `homebrew-cask`, you should uninstall it first. For example:
 >
@@ -52,18 +52,19 @@ brew uninstall dotnet-sdk@9.0
 
 ## .NET SDK Versions
 
-| Version               | Formula           |
-| --------------------- | ----------------- |
-| ⭐️ .NET 10 (LTS)      | `dotnet-sdk@10.0` |
-| ⭐️ .NET 9             | `dotnet-sdk@9.0`  |
-| ⭐️ .NET 8 (LTS)       | `dotnet-sdk@8.0`  |
-| .NET 7                | `dotnet-sdk@7.0`  |
-| .NET 6 (LTS)          | `dotnet-sdk@6.0`  |
-| .NET 5                | `dotnet-sdk@5.0`  |
+| Version              | Formula           |
+| -------------------- | ----------------- |
+| ⭐️ .NET 11 (Preview) | `dotnet-sdk@11.0` |
+| ⭐️ .NET 10 (LTS)     | `dotnet-sdk@10.0` |
+| ⭐️ .NET 9            | `dotnet-sdk@9.0`  |
+| ⭐️ .NET 8 (LTS)      | `dotnet-sdk@8.0`  |
+| .NET 7               | `dotnet-sdk@7.0`  |
+| .NET 6 (LTS)         | `dotnet-sdk@6.0`  |
+| .NET 5               | `dotnet-sdk@5.0`  |
 
 ⭐️ [Supported versions](https://dotnet.microsoft.com/en-us/download/dotnet)
 
-## Where is .NET 4 / .NET Core 4?
+## Where Is .NET 4 / .NET Core 4?
 
 There is no **.NET 4** or **.NET Core 4**. Version 4.x is reserved for [.NET Framework](https://dotnet.microsoft.com/en-us/download/dotnet-framework), which only runs on Windows.
 
@@ -143,7 +144,7 @@ If you’re confused about .NET versions and naming, here’s a quick history:
 
 ## Cask Updater
 
-A simple script is provided to automatically update the supported .NET Casks.
+A simple script is provided to automatically update the supported .NET casks.
 
 Install .NET 10, then run:
 
