@@ -54,7 +54,7 @@ brew uninstall dotnet-sdk@9.0
 
 | Version              | Formula           |
 | -------------------- | ----------------- |
-| ⭐️ .NET 11 (Preview) | `dotnet-sdk@11.0` |
+| ⚠️ .NET 11 (Preview) | `dotnet-sdk@11.0` |
 | ⭐️ .NET 10 (LTS)     | `dotnet-sdk@10.0` |
 | ⭐️ .NET 9            | `dotnet-sdk@9.0`  |
 | ⭐️ .NET 8 (LTS)      | `dotnet-sdk@8.0`  |
@@ -62,7 +62,8 @@ brew uninstall dotnet-sdk@9.0
 | .NET 6 (LTS)         | `dotnet-sdk@6.0`  |
 | .NET 5               | `dotnet-sdk@5.0`  |
 
-⭐️ [Supported versions](https://dotnet.microsoft.com/en-us/download/dotnet)
+- ⭐️ [Supported versions](https://dotnet.microsoft.com/en-us/download/dotnet)
+- ⚠️ *Preview releases provide early access to features that are currently under development. These releases are generally not supported for production use.*
 
 ## Where Is .NET 4 / .NET Core 4?
 
