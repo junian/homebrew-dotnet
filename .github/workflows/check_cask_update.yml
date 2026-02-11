@@ -31,7 +31,7 @@ jobs:
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
           if [[ -n "$(git status --porcelain)" ]]; then
             git add -A
-            git commit -m "dotnet version update"
+            git commit -m "bot: dotnet version update"
             git push
           else
             echo "No changes to commit."

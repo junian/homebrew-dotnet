@@ -62,8 +62,9 @@ brew uninstall dotnet-sdk@9.0
 | .NET 6 (LTS)         | `dotnet-sdk@6.0`  |
 | .NET 5               | `dotnet-sdk@5.0`  |
 
-- ⭐️ [Supported versions](https://dotnet.microsoft.com/en-us/download/dotnet)
-- ⚠️ *Preview releases provide early access to features that are currently under development. These releases are generally not supported for production use.*
+- ⭐️ [**Active**](https://dotnet.microsoft.com/en-us/download/dotnet): During the active support period, .NET releases are updated to improve functional capabilities and mitigate security vulnerabilities.
+- ⚠️ **Preview**: Preview releases provide early access to features that are currently under development. These releases are generally not supported for production use.
+- Other releases have reached end of life, meaning they're no longer supported. It's recommended to moving to a supported release.
 
 ## Where Is .NET 4 / .NET Core 4?
 
