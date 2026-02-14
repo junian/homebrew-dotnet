@@ -1,133 +1,54 @@
 #!/usr/bin/env dotnet run
 
-#:package Newtonsoft.Json@13.0.4
-
 using System;
 using System.IO;
 using System.Text.RegularExpressions;
-using Newtonsoft.Json;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Threading.Tasks;
 using System.Security.Cryptography;
 
+[JsonSourceGenerationOptions(PropertyNamingPolicy = JsonKnownNamingPolicy.CamelCase)]
+[JsonSerializable(typeof(DotnetBuilds.DotnetReleases))]
+[JsonSerializable(typeof(DotnetBuilds.Release))]
+[JsonSerializable(typeof(DotnetBuilds.Sdk))]
+[JsonSerializable(typeof(DotnetBuilds.File))]
+internal partial class SourceGenerationContext : JsonSerializerContext
+{
+}
+
 public class DotnetBuilds
 {
     public partial class DotnetReleases
     {
-        [JsonProperty("channel-version")]
-        public string? ChannelVersion { get; set; }
-
-        [JsonProperty("latest-release")]
-        public string? LatestRelease { get; set; }
-
-        [JsonProperty("latest-release-date")]
-        public string? LatestReleaseDate { get; set; }
-
-        [JsonProperty("latest-runtime")]
-        public string? LatestRuntime { get; set; }
-
-        [JsonProperty("latest-sdk")]
+        [JsonPropertyName("latest-sdk")]
         public string? LatestSdk { get; set; }
 
-        [JsonProperty("support-phase")]
-        public string? SupportPhase { get; set; }
-
-        [JsonProperty("release-type")]
-        public string? ReleaseType { get; set; }
-
-        [JsonProperty("releases")]
+        [JsonPropertyName("releases")]
         public List<Release>? Releases { get; set; }
     }
 
     public partial class Release
     {
-        [JsonProperty("release-date")]
-        public string? ReleaseDate { get; set; }
-
-        [JsonProperty("release-version")]
-        public string? ReleaseVersion { get; set; }
-
-        [JsonProperty("security")]
-        public bool Security { get; set; }
-
-        [JsonProperty("release-notes")]
-        public Uri? ReleaseNotes { get; set; }
-
-        [JsonProperty("runtime")]
-        public Runtime? Runtime { get; set; }
-
-        [JsonProperty("sdk")]
+        [JsonPropertyName("sdk")]
         public Sdk? Sdk { get; set; }
     }
 
-    public partial class Runtime
+    public partial class Sdk
     {
-        [JsonProperty("version")]
-        public string? Version { get; set; }
-
-        [JsonProperty("version-display")]
-        public string? VersionDisplay { get; set; }
-
-        [JsonProperty("vs-version")]
-        public string? VsVersion { get; set; }
-
-        [JsonProperty("vs-mac-version")]
-        public string? VsMacVersion { get; set; }
-
-        [JsonProperty("files")]
+        [JsonPropertyName("files")]
         public List<File>? Files { get; set; }
     }
 
     public partial class File
     {
-        [JsonProperty("name")]
+        [JsonPropertyName("name")]
         public string? Name { get; set; }
 
-        [JsonProperty("rid")]
-        public string? Rid { get; set; }
-
-        [JsonProperty("url")]
+        [JsonPropertyName("url")]
         public Uri? Url { get; set; }
-
-        [JsonProperty("hash")]
-        public string? Hash { get; set; }
-    }
-
-    public partial class Sdk
-    {
-        [JsonProperty("version")]
-        public string? Version { get; set; }
-
-        [JsonProperty("version-display")]
-        public string? VersionDisplay { get; set; }
-
-        [JsonProperty("runtime-version")]
-        public string? RuntimeVersion { get; set; }
-
-        [JsonProperty("vs-version")]
-        public string? VsVersion { get; set; }
-
-        [JsonProperty("vs-mac-version")]
-        public string? VsMacVersion { get; set; }
-
-        [JsonProperty("vs-support")]
-        public string? VsSupport { get; set; }
-
-        [JsonProperty("vs-mac-support")]
-        public string? VsMacSupport { get; set; }
-
-        [JsonProperty("csharp-version")]
-        public string? CsharpVersion { get; set; }
-
-        [JsonProperty("fsharp-version")]
-        public string? FsharpVersion { get; set; }
-
-        [JsonProperty("vb-version")]
-        public string? VbVersion { get; set; }
-
-        [JsonProperty("files")]
-        public List<File>? Files { get; set; }
     }
 }
 
@@ -135,9 +56,9 @@ public class RubyCaskUpdater
 {
     public class CaskData
     {
-        public string Version { get; set; }
-        public string Sha256Arm { get; set; }
-        public string Sha256Intel { get; set; }
+        public string? Version { get; set; }
+        public string? Sha256Arm { get; set; }
+        public string? Sha256Intel { get; set; }
     }
 
     public static CaskData ReadCaskFile(string filePath)
@@ -212,7 +133,7 @@ public class RubyCaskUpdater
 
             var json = await response.Content.ReadAsStringAsync();
             // Console.WriteLine(json);
-            var result = JsonConvert.DeserializeObject<DotnetBuilds.DotnetReleases>(json);
+            var result = JsonSerializer.Deserialize(json, SourceGenerationContext.Default.DotnetReleases);
 
             return result;
         }
