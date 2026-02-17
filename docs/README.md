@@ -156,4 +156,11 @@ Install .NET 10, then run:
 
 If updates are available, the script will modify the cask files. Commit and push the changes afterward.
 
-Most of the time, you don’t need to run it manually, as updates are checked every 6 hours via GitHub Workflow.
+Most of the time, you don’t need to run it manually, as updates are checked every 4 hours via GitHub Workflow.
+
+This repo is on autopilot, meaning every new minor version update will be handled by GitHub Actions.
+I'll just update it occassionally such as when a major version is released or the old versions no longer supported.
+
+## LICENSE
+
+[MIT](/LICENSE)
