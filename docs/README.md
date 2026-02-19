@@ -10,17 +10,17 @@ Install the .NET SDK side-by-side on macOS using the Homebrew package manager.
 
 ## How to Use
 
+> If you are currently using the .NET formula from the official [Homebrew Cask](https://github.com/Homebrew/homebrew-cask/blob/main/Casks/d/dotnet-sdk.rb), you should uninstall it first. For example:
+>
+> ```shell
+> brew uninstall --zap dotnet-sdk
+> ```
+
 First, tap the repository:
 
 ```shell
 brew tap junian/homebrew-dotnet
 ```
-
-> If you are currently using the .NET formula from the official `homebrew-cask`, you should uninstall it first. For example:
->
-> ```shell
-> brew uninstall --zap dotnet-sdk
-> ```
 
 ### Installation
 
@@ -30,7 +30,7 @@ Install the desired .NET version:
 brew install dotnet-sdk@<version>
 ```
 
-For example:
+For example, to install .NET SDK 10.0:
 
 ```shell
 brew install dotnet-sdk@10.0
