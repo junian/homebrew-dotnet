@@ -1,9 +1,9 @@
 cask "dotnet-sdk@11.0" do
   arch arm: "arm64", intel: "x64"
 
-  version "11.0.100-preview.1.26104.118"
-  sha256 arm:   "b30a0eda2dccd514421fa1bd22d1aa691fc6a857af5350968101b56dfa515bd4",
-         intel: "b0e20f25cb0cc7464d77efcf29ab262129ec7e1d18193e616bb50816476ec1d4"
+  version "11.0.100-preview.2.26159.112"
+  sha256 arm:   "14843284bbee7a5a2b1fa814e2d6809404e5746789fac6151a2a8fd07bed786d",
+         intel: "7a03a5d3c210b9f567433b350834965ac8e81365f3069e7a8d888fe189e77e3c"
 
   url "https://builds.dotnet.microsoft.com/dotnet/Sdk/#{version}/dotnet-sdk-#{version}-osx-#{arch}.pkg"
   name ".NET 11 SDK"
