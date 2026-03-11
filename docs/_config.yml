@@ -182,4 +182,9 @@ callouts:
 ga_tracking: G-MKQK789F6L
 # ga_tracking_anonymize_ip: true # Use GDPR compliant Google Analytics settings (true/nil by default)
 
+google_adsense: ca-pub-1135979461412092
+
+# Microsoft Clarity Tracking (optional)
+microsoft_clarity: vtz8klhhw6
+
 # <!-- just-the-docs end />
