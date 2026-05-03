@@ -161,6 +161,14 @@ Most of the time, you don’t need to run it manually, as updates are checked ev
 This repo is on autopilot, meaning every new minor version update will be handled by GitHub Actions.
 I'll just update it occassionally such as when a major version is released or the old versions no longer supported.
 
+## Extra Steps for `fish` users
+
+As reported by @rtsui-harmonicinc (Issue #2), if you're using `fish` instead of the default `zsh` or `bash`, you need to add the `dotnet` binary to the `$PATH` environment variable using this command:
+
+```bash
+fish_add_path /usr/local/share/dotnet/
+```
+
 ## LICENSE
 
 [MIT](/LICENSE)
