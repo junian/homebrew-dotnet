@@ -163,7 +163,7 @@ I'll just update it occassionally such as when a major version is released or th
 
 ## Extra Steps for `fish` users
 
-As reported by @rtsui-harmonicinc (Issue #2), if you're using `fish` instead of the default `zsh` or `bash`, you need to add the `dotnet` binary to the `$PATH` environment variable using this command:
+As reported by [@rtsui-harmonicinc](https://github.com/rtsui-harmonicinc) (Issue [#2](https://github.com/junian/homebrew-dotnet/issues/2)), if you're using `fish` instead of the default `zsh` or `bash`, you need to add the `dotnet` binary to the `$PATH` environment variable using this command:
 
 ```bash
 fish_add_path /usr/local/share/dotnet/
