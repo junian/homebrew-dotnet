@@ -4,6 +4,10 @@ show_downloads: false
 google_analytics: G-BJ58GF34YZ
 # theme: just-the-docs
 remote_theme: junian/jekyll-jtdocs
+url: "https://www.junian.dev" # the base hostname & protocol for your site, e.g. http://example.com
+baseurl: "/homebrew-dotnet" # the subpath of your site, e.g. /blog
+repository: junian/homebrew-dotnet # for github-metadata
+enforce_canonical_domain: true
 
 markdown: CommonMarkGhPages
 commonmark:
