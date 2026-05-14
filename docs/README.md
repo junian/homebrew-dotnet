@@ -52,15 +52,15 @@ brew uninstall dotnet-sdk@9.0
 
 ## .NET SDK Versions
 
-| Version              | Formula           |
-| -------------------- | ----------------- |
-| ⚠️ .NET 11 (Preview) | `dotnet-sdk@11.0` |
-| ⭐️ .NET 10 (LTS)     | `dotnet-sdk@10.0` |
-| ⭐️ .NET 9            | `dotnet-sdk@9.0`  |
-| ⭐️ .NET 8 (LTS)      | `dotnet-sdk@8.0`  |
-| .NET 7               | `dotnet-sdk@7.0`  |
-| .NET 6 (LTS)         | `dotnet-sdk@6.0`  |
-| .NET 5               | `dotnet-sdk@5.0`  |
+| Version              | Latest Release                 | Formula           |
+| -------------------- | -------------------------------|------------------ |
+| ⚠️ .NET 11 (Preview) | `11.0.100-preview.4.26230.115` | `dotnet-sdk@11.0` |
+| ⭐️ .NET 10 (LTS)     | `10.0.300`                     | `dotnet-sdk@10.0` |
+| ⭐️ .NET 9            | `9.0.314`                      | `dotnet-sdk@9.0`  |
+| ⭐️ .NET 8 (LTS)      | `8.0.421`                      | `dotnet-sdk@8.0`  |
+| .NET 7               | `7.0.410`                      | `dotnet-sdk@7.0`  |
+| .NET 6 (LTS)         | `6.0.428`                      | `dotnet-sdk@6.0`  |
+| .NET 5               | `5.0.408`                      | `dotnet-sdk@5.0`  |
 
 - ⭐️ [**Active**](https://dotnet.microsoft.com/en-us/download/dotnet): During the active support period, .NET releases are updated to improve functional capabilities and mitigate security vulnerabilities.
 - ⚠️ **Preview**: Preview releases provide early access to features that are currently under development. These releases are generally not supported for production use.
@@ -76,15 +76,15 @@ The closest alternative to .NET Framework 4.x on macOS is [Mono MDK](#mono-mdk-v
 
 ## .NET Core SDK Versions
 
-| Version             | Formula          |
-| ------------------- | ---------------- |
-| .NET Core 3.1 (LTS) | `dotnet-sdk@3.1` |
-| .NET Core 3.0       | `dotnet-sdk@3.0` |
-| .NET Core 2.2       | `dotnet-sdk@2.2` |
-| .NET Core 2.1 (LTS) | `dotnet-sdk@2.1` |
-| .NET Core 2.0       | `dotnet-sdk@2.0` |
-| .NET Core 1.1       | `dotnet-sdk@1.1` |
-| .NET Core 1.0       | `dotnet-sdk@1.0` |
+| Version             | Latest Release | Formula          |
+| ------------------- | ---------------|----------------- |
+| .NET Core 3.1 (LTS) | `3.1.426`      | `dotnet-sdk@3.1` |
+| .NET Core 3.0       | `3.0.103`      | `dotnet-sdk@3.0` |
+| .NET Core 2.2       | `2.2.207`      | `dotnet-sdk@2.2` |
+| .NET Core 2.1 (LTS) | `2.1.818`      | `dotnet-sdk@2.1` |
+| .NET Core 2.0       | `2.1.202`      | `dotnet-sdk@2.0` |
+| .NET Core 1.1       | `1.1.14`       | `dotnet-sdk@1.1` |
+| .NET Core 1.0       | `1.1.14`       | `dotnet-sdk@1.0` |
 
 ## Special Note for .NET Core 3.1 and .NET 5
 
