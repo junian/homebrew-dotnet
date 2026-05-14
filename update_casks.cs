@@ -266,9 +266,48 @@ public class RubyCaskUpdater
     const string DotnetX64Filename = "dotnet-sdk-osx-x64.pkg";
 
     /// <summary>
+    /// Updates the "Latest Release" column in the .NET SDK Versions table inside docs/README.md
+    /// for the specified major version (e.g. "10.0").
+    /// </summary>
+    /// <param name="readmePath">Path to the README.md file.</param>
+    /// <param name="majorVersion">The major version string, e.g. "10.0".</param>
+    /// <param name="latestSdkVersion">The new latest SDK version string to write into the table.</param>
+    public static void UpdateReadmeTable(string readmePath, string majorVersion, string latestSdkVersion)
+    {
+        if (!File.Exists(readmePath))
+            throw new FileNotFoundException($"README not found: {readmePath}");
+
+        var content = File.ReadAllText(readmePath);
+
+        // Match a table row that contains the formula token for this major version,
+        // e.g. "dotnet-sdk@10.0", and replace the backtick-quoted version in the
+        // "Latest Release" column (second column).
+        //
+        // Row format (columns separated by |):
+        //   | <label> | `<version>` | `dotnet-sdk@X.Y` |
+        //
+        // The regex captures everything up to and including the opening backtick of
+        // the version cell, then the version value itself, then the rest of the row.
+        var pattern = $@"(\|[^|]*\|\s*`)[^`]+(`[^|]*\|\s*`dotnet-sdk@{Regex.Escape(majorVersion)}`)";
+        var replacement = $"${{1}}{latestSdkVersion}${{2}}";
+
+        var updated = Regex.Replace(content, pattern, replacement);
+
+        if (updated == content)
+        {
+            Console.WriteLine($"README table row for .NET {majorVersion} not found or already up-to-date.");
+            return;
+        }
+
+        File.WriteAllText(readmePath, updated);
+        Console.WriteLine($"README table updated for .NET {majorVersion}: {latestSdkVersion}");
+    }
+
+    /// <summary>
     /// Main entry point that checks for new .NET SDK releases and updates corresponding Homebrew Cask files.
     /// Iterates through supported .NET versions, fetches latest release information, downloads installers,
     /// calculates SHA-256 hashes, and updates the cask files accordingly.
+    /// Also updates the Latest Release column in docs/README.md for each supported version.
     /// </summary>
     /// <param name="args">Command line arguments (currently unused).</param>
     public static async Task Main(string[] args)
@@ -282,6 +321,8 @@ public class RubyCaskUpdater
             // "7.0", // Out of support May 14, 2024
             // "6.0", // Out of support November 12, 2024
         };
+
+        var readmePath = "./docs/README.md";
 
         foreach (var version in supportedVersions)
         {
@@ -337,9 +378,13 @@ public class RubyCaskUpdater
                     Sha256Intel = sha256x64 // New Intel SHA256
                 };
 
-                // Update the file
+                // Update the cask file
                 UpdateCaskFile(filePath, newData);
                 Console.WriteLine($".NET {version} Cask file updated successfully!");
+                Console.WriteLine("");
+
+                // Update the README table
+                UpdateReadmeTable(readmePath, version, latestSdkVersion);
                 Console.WriteLine("");
 
                 // Verify the changes
