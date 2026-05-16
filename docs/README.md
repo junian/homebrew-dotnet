@@ -171,4 +171,4 @@ fish_add_path /usr/local/share/dotnet/
 
 ## LICENSE
 
-[MIT](/LICENSE)
+MIT
