@@ -19,7 +19,7 @@ Install the .NET SDK side-by-side on macOS using the Homebrew package manager.
 Starting from Homebrew 5.2, you first need to trust the tap:
 
 ```bash
-brew trust junian/dotnet
+brew trust junian/homebrew-dotnet
 ```
 
 After that, you can tap the repository:
