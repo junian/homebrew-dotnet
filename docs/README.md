@@ -16,7 +16,13 @@ Install the .NET SDK side-by-side on macOS using the Homebrew package manager.
 > brew uninstall --zap dotnet-sdk
 > ```
 
-First, tap the repository:
+Starting from Homebrew 5.2, you first need to trust the tap:
+
+```bash
+brew trust junian/dotnet
+```
+
+After that, you can tap the repository:
 
 ```shell
 brew tap junian/homebrew-dotnet
