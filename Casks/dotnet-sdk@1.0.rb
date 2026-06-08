@@ -26,7 +26,7 @@ cask "dotnet-sdk@1.0" do
     end
   end
 
-  depends_on macos: ">= :ventura"
+  depends_on macos: :monterey
 
   pkg "dotnet-dev-osx-#{arch}.#{version}.pkg"
 
