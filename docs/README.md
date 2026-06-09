@@ -60,10 +60,10 @@ brew uninstall dotnet-sdk@9.0
 
 | Version              | Latest Release                 | Formula           |
 | -------------------- | -------------------------------|------------------ |
-| ⚠️ .NET 11 (Preview) | `11.0.100-preview.4.26230.115` | `dotnet-sdk@11.0` |
-| ⭐️ .NET 10 (LTS)     | `10.0.300`                     | `dotnet-sdk@10.0` |
-| ⭐️ .NET 9            | `9.0.314`                      | `dotnet-sdk@9.0`  |
-| ⭐️ .NET 8 (LTS)      | `8.0.421`                      | `dotnet-sdk@8.0`  |
+| ⚠️ .NET 11 (Preview) | `11.0.100-preview.5.26302.115` | `dotnet-sdk@11.0` |
+| ⭐️ .NET 10 (LTS)     | `10.0.301`                     | `dotnet-sdk@10.0` |
+| ⭐️ .NET 9            | `9.0.315`                      | `dotnet-sdk@9.0`  |
+| ⭐️ .NET 8 (LTS)      | `8.0.422`                      | `dotnet-sdk@8.0`  |
 | .NET 7               | `7.0.410`                      | `dotnet-sdk@7.0`  |
 | .NET 6 (LTS)         | `6.0.428`                      | `dotnet-sdk@6.0`  |
 | .NET 5               | `5.0.408`                      | `dotnet-sdk@5.0`  |
