@@ -6,6 +6,9 @@
 
 Install the .NET SDK side-by-side on macOS using the Homebrew package manager.
 
+[![Homebrew Dotnet on GitHub](https://img.shields.io/badge/GitHub-%23121011.svg?logo=github&logoColor=white&style=for-the-badge)][github]
+[![Buy me a coffee](https://img.shields.io/badge/Support-Buy%20Me%20A%20Coffee-FFDD00?logo=buymeacoffee&style=for-the-badge "Buy me a coffee")](https://www.junian.dev/coffee/)
+
 </div>
 
 ## How to Use
@@ -177,4 +180,7 @@ fish_add_path /usr/local/share/dotnet/
 
 ## LICENSE
 
-MIT
+[MIT][license]
+
+[license]: https://github.com/junian/homebrew-dotnet/blob/master/LICENSE
+[github]: https://github.com/junian/homebrew-dotnet
