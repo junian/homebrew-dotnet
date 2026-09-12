@@ -1,6 +1,6 @@
 cask "godot-mono-app@4" do
-  version "4.6.3"
-  sha256 "380bf3cd0c9a8a9a7c7fd907a70c0372857445f04fee3509dbfa79846c314573"
+  version "4.7.2"
+  sha256 "8af3977b60d2c59802f7c8ff1914b3ca02a5e294f7381fc1104ee777e33cbbd8"
 
   url "https://github.com/godotengine/godot/releases/download/#{version}-stable/Godot_v#{version}-stable_mono_macos.universal.zip"
   name "Godot Engine"
@@ -13,20 +13,12 @@ cask "godot-mono-app@4" do
     strategy :github_latest
   end
 
-  depends_on macos: :big_sur
   # depends_on cask: "dotnet-sdk"
+  depends_on :macos
 
   app "Godot_mono.app"
-  # shim script (https://github.com/Homebrew/homebrew-cask/issues/18809)
-  shimscript = "#{staged_path}/godot-mono.wrapper.sh"
-  binary shimscript, target: "godot-mono"
-
-  preflight_steps do
-    File.write shimscript, <<~EOS
-      #!/bin/bash
-      '#{appdir}/Godot_mono.app/Contents/MacOS/Godot' "$@"
-    EOS
-  end
+  command_wrapper "godot-mono",
+                  executable: "#{appdir}/Godot_mono.app/Contents/MacOS/Godot"
 
   uninstall quit: "org.godotengine.godot"
 
