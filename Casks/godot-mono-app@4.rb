@@ -2,8 +2,7 @@ cask "godot-mono-app@4" do
   version "4.6.3"
   sha256 "380bf3cd0c9a8a9a7c7fd907a70c0372857445f04fee3509dbfa79846c314573"
 
-  url "https://github.com/godotengine/godot/releases/download/#{version}-stable/Godot_v#{version}-stable_mono_macos.universal.zip",
-      verified: "github.com/godotengine/godot/"
+  url "https://github.com/godotengine/godot/releases/download/#{version}-stable/Godot_v#{version}-stable_mono_macos.universal.zip"
   name "Godot Engine"
   desc "C# scripting capable version of Godot game engine"
   homepage "https://godotengine.org/"
@@ -22,7 +21,7 @@ cask "godot-mono-app@4" do
   shimscript = "#{staged_path}/godot-mono.wrapper.sh"
   binary shimscript, target: "godot-mono"
 
-  preflight do
+  preflight_steps do
     File.write shimscript, <<~EOS
       #!/bin/bash
       '#{appdir}/Godot_mono.app/Contents/MacOS/Godot' "$@"
