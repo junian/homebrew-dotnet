@@ -63,7 +63,7 @@ brew uninstall dotnet-sdk@9.0
 
 | Version              | Latest Release                 | Formula           |
 | -------------------- | -------------------------------|------------------ |
-| ⚠️ .NET 11 (Preview) | `11.0.100-rc.2.26504.105` | `dotnet-sdk@11.0` |
+| 🚀 .NET 11 (Go-live) | `11.0.100-rc.2.26504.105` | `dotnet-sdk@11.0` |
 | ⭐️ .NET 10 (LTS)     | `10.0.402`                     | `dotnet-sdk@10.0` |
 | ⭐️ .NET 9            | `9.0.319`                      | `dotnet-sdk@9.0`  |
 | ⭐️ .NET 8 (LTS)      | `8.0.426`                      | `dotnet-sdk@8.0`  |
@@ -72,6 +72,7 @@ brew uninstall dotnet-sdk@9.0
 | .NET 5               | `5.0.408`                      | `dotnet-sdk@5.0`  |
 
 - ⭐️ [**Active**](https://dotnet.microsoft.com/en-us/download/dotnet): During the active support period, .NET releases are updated to improve functional capabilities and mitigate security vulnerabilities.
+- 🚀 **Go-live**: Go-live releases are supported by Microsoft in production. These are typically the release candidate builds, just before the generally available (GA) release.
 - ⚠️ **Preview**: Preview releases provide early access to features that are currently under development. These releases are generally not supported for production use.
 - Other releases have reached end of life, meaning they're no longer supported. It's recommended to moving to a supported release.
 
